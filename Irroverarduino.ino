@@ -53,7 +53,7 @@ void loop() {
 
 void processData() {
   
-  if (remoteData == -1186529536){
+  if (remoteData == -367657216){
         Serial.println("UP pressed");
         motor_drive(FORWARD);
         delay(200);
@@ -64,7 +64,7 @@ void processData() {
         motor_brake();
         delay(200);
   }
-  if (remoteData == -367657216){
+  if (remoteData == -1186529536){
         Serial.println("DOWN pressed");
         motor_drive(REVERSE);
         delay(200);
