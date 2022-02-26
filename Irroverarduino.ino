@@ -16,7 +16,7 @@ int motor2pin1 = 10;
 int motor2pin2 = 11;
 
 long remoteData = 0;
-
+//lafvin remote
 void setup() {
   Serial.begin(9600);
 
@@ -43,6 +43,7 @@ void loop() {
   if (IrReceiver.decode()) {
     if (IrReceiver.decodedIRData.decodedRawData != 0) {
       remoteData = IrReceiver.decodedIRData.decodedRawData; 
+      Serial.println(remoteData);
     }    
     IrReceiver.resume();  // Receive the next value
   } 
@@ -51,37 +52,36 @@ void loop() {
 }
 
 void processData() {
-  Serial.println(remoteData);
   
-  if (remoteData == -467959936){
+  if (remoteData == -1186529536){
         Serial.println("UP pressed");
         motor_drive(FORWARD);
         delay(200);
   }
-  if (remoteData == -150438016){
+  if (remoteData == -1086259456){
         Serial.println("BREAK pressed");
         delay(50);
         motor_brake();
         delay(200);
   }
-  if (remoteData == -100302976){
+  if (remoteData == -367657216){
         Serial.println("DOWN pressed");
         motor_drive(REVERSE);
         delay(200);
   }
-  if (remoteData == -133726336){
+  if (remoteData == -1153106176){
       Serial.println("LEFT pressed");
       motor_rotate(LEFT);
       delay(200);
       motor_brake();
-      remoteData = -150438016;
+      remoteData = -1086259456;
   }
-  if (remoteData == -167149696){
+  if (remoteData == -1136394496){
       Serial.println("RIGHT pressed");
       motor_rotate(RIGHT);
       delay(200);
       motor_brake();
-      remoteData = -150438016;
+      remoteData = -1086259456;
   }
   if (remoteData == -217284736){
       Serial.println("UPP pressed");
